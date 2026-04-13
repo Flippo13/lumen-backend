@@ -57,14 +57,9 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<KeycloakAuthService>();
-// Identity services
-builder.Services.AddIdentityCore<UserAccount>()
-    .AddEntityFrameworkStores<UserAccountDbContext>()
-    .AddDefaultTokenProviders()
-    .AddApiEndpoints();
 
-builder.Services.AddDbContext<UserAccountDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("IdentityConnection")));
+//builder.Services.AddDbContext<UserAccountDbContext>(options =>
+  //  options.UseNpgsql(builder.Configuration.GetConnectionString("IdentityConnection")));
 builder.Services.AddDbContext<LearningResourceDb>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("LearningResourceConnection")));
 
